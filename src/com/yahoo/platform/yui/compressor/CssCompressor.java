@@ -313,7 +313,8 @@ public class CssCompressor {
         css = css.replaceAll(";+}", "}");
 
         // Replace 0(px,em,%) with 0.
-        css = css.replaceAll("(?i)(^|[^.0-9])(?:0?\\.)?0(?:px|em|%|in|cm|mm|pc|pt|ex|deg|g?rad|m?s|k?hz)", "$10");
+        css = css.replaceAll("(?i)(^|[^\\.0-9])(?:0?\\.)?0(?:px|em|%|in|cm|mm|pc|pt|ex|deg|g?rad|m?s|k?hz)", "$10");
+        css = css.replaceAll("(@(?:-.+?)?keyframe.*?)0\\{", "$10%{"); 
         // Replace x.0(px,em,%) with x(px,em,%).
         css = css.replaceAll("([0-9])\\.0(px|em|%|in|cm|mm|pc|pt|ex|deg|g?rad|m?s|k?hz| |;)", "$1$2");
 
