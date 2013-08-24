@@ -562,6 +562,12 @@ public class JavaScriptCompressor {
         }
     }
 
+    public void compress(Writer out, int linebreak, boolean munge, boolean verbose,
+		    boolean preserveAllSemiColons, boolean disableOptimizations)
+	            throws IOException {
+        compress(out, null, linebreak, munge, verbose, preserveAllSemiColons, disableOptimizations);
+    }
+
     private ScriptOrFnScope getCurrentScope() {
         return (ScriptOrFnScope) scopes.peek();
     }
