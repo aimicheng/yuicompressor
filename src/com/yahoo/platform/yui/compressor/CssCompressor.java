@@ -96,6 +96,7 @@ public class CssCompressor {
         return sb.toString();
     }
 
+
     public void compress(Writer out, int linebreakpos)
             throws IOException {
 
@@ -320,9 +321,9 @@ public class CssCompressor {
 
         // Replace 0(px,em,%) with 0.
         css = css.replaceAll("(?i)(^|[^\\.0-9])(?:0?\\.)?0(?:px|em|%|in|cm|mm|pc|pt|ex|deg|g?rad|m?s|k?hz)", "$10");
-        css = css.replaceAll("(@(?:-.+?)?keyframe.*?)0\\{", "$10%{"); 
+        css = css.replaceAll("(@(?:-.+?)?keyframes.*?)0\\{", "$10%{");
         // Replace x.0(px,em,%) with x(px,em,%).
-        css = css.replaceAll("([0-9])\\.0(px|em|%|in|cm|mm|pc|pt|ex|deg|g?rad|m?s|k?hz| |;)", "$1$2");
+        css = css.replaceAll("(?i)(^|[^0-9])(?:0?\\.)?0(?:px|em|%|in|cm|mm|pc|pt|ex|deg|g?rad|m?s|k?hz)", "$10");
 
         // Replace 0 0 0 0; with 0.
         css = css.replaceAll(":0 0 0 0(;|})", ":0$1");
